@@ -16,8 +16,8 @@ y = np.random.randn(N, D_out)
 w1 = np.random.randn(D_in, H)
 w2 = np.random.randn(H, D_out)
 
-_t = []     # iterations
-_loss = []  # losses
+_t = []     # iteration
+_loss = []  # loss
 
 learning_rate = 1e-6
 for t in range(500):
@@ -47,6 +47,7 @@ for t in range(500):
 
 # plot a line chart
 plt.plot(_t, _loss, lw=1, color='r')
+plt.title('Numpy Neural Network')
 plt.xlabel('iteration')
 plt.ylabel('loss')
 plt.show()
