@@ -1,5 +1,5 @@
 # neural_network.py
-# implementation of neural network with numpy (tutorial from PyTorch)
+# implementation of neural network with Numpy (tutorial from PyTorch)
 
 import numpy as np
 import matplotlib.pyplot as plt
