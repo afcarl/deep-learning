@@ -1,5 +1,6 @@
 # neural_network.py
 # implementation of neural network with Numpy (tutorial from PyTorch)
+# update 04.15.17: added momentum
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,10 +17,16 @@ y = np.random.randn(N, D_out)
 w1 = np.random.randn(D_in, H)
 w2 = np.random.randn(H, D_out)
 
+# Initialize velocities
+v1 = np.zeros((D_in, H), dtype=np.float)
+v2 = np.zeros((H, D_out), dtype=np.float)
+
 _t = []     # iteration
 _loss = []  # loss
 
+momentum = 0.9
 learning_rate = 1e-6
+
 for t in range(500):
     # Forward pass: compute predicted y
     h = x.dot(w1)               # input sum of hidden layer
@@ -41,13 +48,17 @@ for t in range(500):
     grad_h[h < 0] = 0
     grad_w1 = x.T.dot(grad_h)
 
+    # Update velocity
+    v1 = momentum * v1 + learning_rate * grad_w1
+    v2 = momentum * v2 + learning_rate * grad_w2
+ 
     # Update weights
-    w1 -= learning_rate * grad_w1
-    w2 -= learning_rate * grad_w2
+    w1 -= v1
+    w2 -= v2
 
 # plot a line chart
 plt.plot(_t, _loss, lw=1, color='r')
-plt.title('Numpy Neural Network')
+plt.title('Numpy Neural Network Momentum')
 plt.xlabel('iteration')
 plt.ylabel('loss')
 plt.show()
