@@ -4,3 +4,4 @@
 - 04.11.17: implementation of neural network with PyTorch Autograd
 - 04.11.17:	implementation of neural network with PyTorch Autograd Function
 - 04.15.17: implementation of neural network with Numpy (with momentum)
+- 04.15.17: implementation of neural network with Adam optimizer
